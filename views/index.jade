@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        title #{title}
+        style.
+            *{
+                margin: 0;padding: 0;list-style: none;
+            }
+            h1{
+                font-size: 20px;
+            }
+            .content{
+                background: #f0f0f0;padding: 16px;
+            }
+            .search,.read,.insert,.modify,.delete{
+                background: #FFFFFF;
+                margin-bottom: 16px;
+                padding: 16px;
+            }
+            .delete{
+                margin-bottom: 0;
+            }
+            .content input{
+                height: 20px;
+                padding: 6px 8px;
+                margin-right: 12px;
+            }
+            .content button{
+                display: inline-block;height: 36px;
+            }
+    body
+        div.content
+            div.search
+                h1 数据查询
+                    form(action="/index/search" method="post" accept-charset="utf-8")
+                        input.search(name='searchUrl',placeholder='请输入文件路径')
+                        button(type='submit') 数据查询
+            div.read
+                h1 数据读取
+                    form(action="/index/read" method="post" accept-charset="utf-8")
+                        input.read(name='searchUrl',placeholder='请输入文件路径')
+                        button(type='submit') 数据查询
+            div.insert
+                h1 数据添加
+                    form(action="/index/insert" method="post" accept-charset="utf-8")
+                        input.search(name='searchUrl',value='-----')
+                        button(type='submit') 数据添加
+            div.modify
+                h1 数据修改
+                    form(action="/index/modify" method="post" accept-charset="utf-8")
+                        input.search(name='searchUrl',value='-----')
+                        button(type='submit') 数据修改
+            div.delete
+                h1 数据删除
+                    form(action="/index/delete" method="post" accept-charset="utf-8")
+                        input.search(name='searchUrl',placeholder='请输入文件路径')
+                        button(type='submit') 数据删除
+    script(src='/js/index.js')
