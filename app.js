@@ -2,6 +2,7 @@ var express = require('express');
 var port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 var marklogic = require('marklogic');
+var fs = require('fs');
 var db = marklogic.createDatabaseClient({
     host: '123.59.52.55',
     port: '8000',
@@ -41,8 +42,8 @@ app.post('/index/search', function (req, res) {
 //读取
 app.post('/index/read', function (req, res) {
     console.log('search...');
-    var info = req.body.searchUrl;
-    db.documents.read('/gs/cobra.json').result(function (documents) {
+    var uri = req.body.searchUrl;
+    db.documents.read(uri).result(function (documents) {
         documents.forEach(function (document) {
             console.log(JSON.stringify(document, null, 2) + '\n');
         });
@@ -50,29 +51,26 @@ app.post('/index/read', function (req, res) {
         console.log(JSON.stringify(error, null, 2));
     });
     res.render('index', {
-        title: '读取结果'
+        title: '读取结果',
+        read:'读取成功'
     });
 });
 //添加
 app.post('/index/insert', function (req, res) {
     console.log('insert...');
-    var info = req.body.searchUrl;
-    var documents = [{
-        uri: '/gs/aardvark.json2',
-        content: {name: 'aardvark', kind: 'mammal', desc: 'The aardvark is a medium-sized burrowing, nocturnal mammal.'}
-    }, {
-        uri: '/gs/bluebird.json2',
-        content: {name: 'bluebird', kind: 'bird', desc: 'The bluebird is a medium-sized, mostly insectivorous bird.'}
-    }, {
-        uri: '/gs/cobra.json2',
-        content: {name: 'cobra', kind: 'mammal', desc: 'The cobra is a venomous, hooded snake of the family Elapidae.'}
-    }];
-    db.documents.write(documents).result(function (response) {
-        console.log('Loaded the following documents:');
-        response.documents.forEach(function (document) {
-            console.log('  ' + document.uri);
-        });
-    }, function (error) {
+    var uri = req.body.searchUrl;
+    var file=req.body.file_name;
+    console.log(req.body)
+    var writableStream = db.documents.write({
+        //uri: '/cobol2xml/test4.xml',
+        uri:uri,
+        contentType: 'application/xml',
+        content: file
+    });
+    writableStream.result(function(response) {
+        console.log('wrote '+response.documents[0].uri);
+        console.log('done');
+    }, function(error) {
         console.log(JSON.stringify(error, null, 2));
     });
     res.render('index', {
@@ -98,9 +96,11 @@ app.post('/index/modify', function (req, res) {
 app.post('/index/delete', function (req, res) {
     console.log('delete...')
     var info = req.body.searchUrl;
-    db.documents.removeAll({directory: '/gs/'}).result(function (response) {
-        console.log(response);
-    })
+    db.documents.remove('/cobol2xml/test4.xml').result(
+        function(response) {
+            console.log(JSON.stringify(response));
+        }
+    );
     res.render('index', {
         title: '删除结果'
     });

@@ -1,0 +1,59 @@
+<koopa>
+  <compilationGroup>
+    <compilationUnit>
+      <identificationDivision>
+        <TOKEN startline="1" startpos="7" endline="1" endpos="21">IDENTIFICATION</TOKEN>
+        <TOKEN startline="1" startpos="22" endline="1" endpos="30">DIVISION</TOKEN>
+        <TOKEN startline="1" startpos="30" endline="1" endpos="31">.</TOKEN>
+        <identificationDivisionBody>
+          <programIdParagraph>
+            <TOKEN startline="2" startpos="7" endline="2" endpos="17">PROGRAM-ID</TOKEN>
+            <TOKEN startline="2" startpos="17" endline="2" endpos="18">.</TOKEN>
+            <programName>
+              <cobolWord>
+                <TOKEN startline="2" startpos="19" endline="2" endpos="24">HELLO-wxl</TOKEN>
+              </cobolWord>
+            </programName>
+            <TOKEN startline="2" startpos="24" endline="2" endpos="25">.</TOKEN>
+          </programIdParagraph>
+        </identificationDivisionBody>
+      </identificationDivision>
+      <procedureDivision>
+        <TOKEN startline="4" startpos="7" endline="4" endpos="16">PROCEDURE</TOKEN>
+        <TOKEN startline="4" startpos="17" endline="4" endpos="25">DIVISION</TOKEN>
+        <TOKEN startline="4" startpos="25" endline="4" endpos="26">.</TOKEN>
+        <paragraph>
+          <paragraphName>
+            <cobolWord>
+              <TOKEN startline="5" startpos="7" endline="5" endpos="22">A000-FIRST-PARA</TOKEN>
+            </cobolWord>
+          </paragraphName>
+          <TOKEN startline="5" startpos="22" endline="5" endpos="23">.</TOKEN>
+          <sentence>
+            <statement>
+              <verb>
+                <TOKEN startline="6" startpos="11" endline="6" endpos="18">DISPLAY</TOKEN>
+              </verb>
+              <water>
+                <TOKEN startline="6" startpos="19" endline="6" endpos="20">“</TOKEN>
+                <TOKEN startline="6" startpos="20" endline="6" endpos="26">Coding</TOKEN>
+                <TOKEN startline="6" startpos="27" endline="6" endpos="32">Sheet</TOKEN>
+                <TOKEN startline="6" startpos="32" endline="6" endpos="33">”</TOKEN>
+              </water>
+            </statement>
+            <TOKEN startline="6" startpos="33" endline="6" endpos="34">.</TOKEN>
+          </sentence>
+          <sentence>
+            <statement>
+              <stopStatement>
+                <TOKEN startline="7" startpos="7" endline="7" endpos="11">STOP</TOKEN>
+                <TOKEN startline="7" startpos="12" endline="7" endpos="15">RUN</TOKEN>
+              </stopStatement>
+            </statement>
+            <TOKEN startline="7" startpos="15" endline="7" endpos="16">.</TOKEN>
+          </sentence>
+        </paragraph>
+      </procedureDivision>
+    </compilationUnit>
+  </compilationGroup>
+</koopa>

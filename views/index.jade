@@ -37,24 +37,30 @@ html(lang="en")
                     form(action="/index/search" method="post" accept-charset="utf-8")
                         input.search(name='searchUrl',placeholder='请输入文件路径')
                         button(type='submit') 数据查询
+                    div #{search_file}
             div.read
                 h1 数据读取
                     form(action="/index/read" method="post" accept-charset="utf-8")
                         input.read(name='searchUrl',placeholder='请输入文件路径')
                         button(type='submit') 数据查询
+                    div #{read_file}
             div.insert
                 h1 数据添加
-                    form(action="/index/insert" method="post" accept-charset="utf-8")
-                        input.search(name='searchUrl',value='-----')
+                    form(action="/index/insert" method="post" accept-charset="utf-8" enctype="multipart/form-data")
+                        input.search(name='searchUrl',value='请输入文件路径')
+                        input.search(name='file_name',type='file')
                         button(type='submit') 数据添加
+                    div #{insert_file}
             div.modify
                 h1 数据修改
                     form(action="/index/modify" method="post" accept-charset="utf-8")
                         input.search(name='searchUrl',value='-----')
                         button(type='submit') 数据修改
+                    div #{modify_file}
             div.delete
                 h1 数据删除
                     form(action="/index/delete" method="post" accept-charset="utf-8")
                         input.search(name='searchUrl',placeholder='请输入文件路径')
                         button(type='submit') 数据删除
+                    div #{delete_file}
     script(src='/js/index.js')
